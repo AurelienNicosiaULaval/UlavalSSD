@@ -1,7 +1,7 @@
 Package: UlavalSSD
 Type: Package
 Title: Package R pour les cours de statistiques et sciences des données de l'université Laval
-Version: 0.1.2
+Version: 0.2.0
 Author: Aurélien Nicosia
 Maintainer: Aurélien Nicosia <aurelien.nicosia@mat.ulaval.ca>
 Description: Le package contient des bases de données et des fonctions utile pour le cours STT-1100: Introduction à la sciences des données de l'université Laval.
