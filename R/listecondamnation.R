@@ -1,0 +1,20 @@
+#' Condamnations des établissements alimentaires au Québec
+#'
+#' Ce jeu de données contient les condamnations des établissements alimentaires au Québec.
+#' Les données proviennent de la plateforme Données Québec et ont été nettoyées pour ne conserver que les colonnes essentielles.
+#'
+#' @format Un data frame avec 1712 observations et 10 variables :
+#' \describe{
+#'   \item{Nom_exploitant}{Nom de l'exploitant de l'établissement (chaîne de caractères).}
+#'   \item{Raison_sociale}{Nom commercial de l'établissement (chaîne de caractères).}
+#'   \item{Description_infraction}{Description de l'infraction constatée (chaîne de caractères).}
+#'   \item{Adresse_lieu_infraction}{Adresse où l'infraction a été constatée (chaîne de caractères).}
+#'   \item{Type_etablissement}{Type d'établissement concerné (chaîne de caractères).}
+#'   \item{Date_infraction}{Date à laquelle l'infraction a été constatée (format POSIXct).}
+#'   \item{Date_jugement}{Date du jugement relatif à l'infraction (format POSIXct).}
+#'   \item{Date_publication}{Date de publication de la condamnation (format POSIXct).}
+#'   \item{Amende}{Montant de l'amende infligée (chaîne de caractère).}
+#'   \item{SOC_NOM_ARTCL_INFRC}{Nature de l'infraction selon la législation (chaîne de caractères, peut contenir des valeurs manquantes).}
+#' }
+#' @source [Données Québec](https://www.donneesquebec.ca/recherche/dataset/condamnations-des-etablissements-alimentaires-et-condamnations-concernant-le-bien-etre-des-anim)
+"listecondamnation"
