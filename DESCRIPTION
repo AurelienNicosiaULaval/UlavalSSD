@@ -5,7 +5,7 @@ Version: 0.1.2
 Author: Aurélien Nicosia
 Maintainer: Aurélien Nicosia <aurelien.nicosia@mat.ulaval.ca>
 Description: Le package contient des bases de données et des fonctions utile pour le cours STT-1100: Introduction à la sciences des données de l'université Laval.
-License: 
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: 
