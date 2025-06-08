@@ -29,6 +29,5 @@ library(UlavalSSD)
 
 Le package inclut des ensembles de données spécialement sélectionnés pour **STT-1100**. Voici quelques-uns des principaux :
 
--   **`nom_du_jeu_de_donnees1`** – [Courte description]
-
--   **`nom_du_jeu_de_donnees2`** – [Courte description]
+- **`MeteoQuebec`** – Observations météorologiques quotidiennes (1970–2025) pour une station située dans la province de Québec.
+- **`listecondamnation`** – Condamnations d’établissements alimentaires au Québec avec détail des infractions et montants d’amende.
