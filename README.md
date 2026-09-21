@@ -7,7 +7,8 @@
 
 ## 📥 Installation
 
-Vous pouvez installer ce package directement depuis GitHub avec `remotes` :
+La méthode recommandée télécharge directement l'archive publique de GitHub.
+Elle ne nécessite pas de jeton d'authentification GitHub :
 
 ``` r
 # Installer le package remotes si nécessaire
@@ -15,9 +16,9 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
   install.packages("remotes", repos = "https://cloud.r-project.org")
 }
 
-# Installer UlavalSSD sans mettre à jour les autres packages
-remotes::install_github(
-  "AurelienNicosiaULaval/UlavalSSD",
+# Installer UlavalSSD depuis l'archive publique de GitHub
+remotes::install_url(
+  "https://github.com/AurelienNicosiaULaval/UlavalSSD/archive/refs/heads/main.tar.gz",
   upgrade = "never"
 )
 ```
@@ -25,22 +26,30 @@ remotes::install_github(
 Depuis la version 0.2.1, `UlavalSSD` ne nécessite aucun package supplémentaire
 pour fonctionner. `remotes` sert uniquement à l'installation depuis GitHub.
 
-### Si l'accès à l'API GitHub échoue
+### Erreur `HTTP error 401. Bad credentials`
 
-Si `install_github()` renvoie une erreur d'authentification ou de limite de
-requêtes, l'archive publique peut être installée directement. Après avoir
-installé `remotes` avec le code ci-dessus, exécutez :
+Si une ancienne commande `remotes::install_github()` affiche
+`Using GitHub PAT from the git credential store`, puis cette erreur,
+GitHub refuse le jeton enregistré sur l'ordinateur. Utilisez la commande
+`remotes::install_url()` ci-dessus : elle ne modifie ni ne supprime les
+identifiants enregistrés.
+
+### Autre méthode avec l'API GitHub
+
+Si l'authentification GitHub fonctionne sur votre ordinateur, cette commande
+reste disponible :
 
 ```r
-remotes::install_url(
-  "https://github.com/AurelienNicosiaULaval/UlavalSSD/archive/refs/heads/main.tar.gz",
+remotes::install_github(
+  "AurelienNicosiaULaval/UlavalSSD",
   upgrade = "never"
 )
 ```
 
-Cette méthode utilise le téléchargement public de GitHub sans passer par son
-API. Si elle échoue également, conservez le message d'erreur complet ainsi que
-le résultat de `sessionInfo()` pour diagnostiquer le problème.
+En cas d'erreur d'authentification ou de limite de requêtes de l'API, utilisez
+la méthode recommandée par archive publique. Si celle-ci échoue également,
+conservez le message d'erreur complet ainsi que le résultat de `sessionInfo()`
+pour diagnostiquer le problème.
 
 ## 🔧 Utilisation
 
