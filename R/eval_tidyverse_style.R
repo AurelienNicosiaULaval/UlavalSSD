@@ -15,7 +15,6 @@
 #' print(result)
 #' }
 #'
-#' @importFrom stringr str_detect
 #' @export
 eval_tidyverse_style <- function(file_path) {
   # Lire le contenu du fichier

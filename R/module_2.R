@@ -14,10 +14,10 @@
 #' @export
 consulter_taches <- function(section) {
   taches <- list(
-    "histogramme" = "Je veux voir la répartition des longueurs de nageoires des manchots. En effet, quand j'ai regardé, il me semblait y avoir une erreur dans les données. J'aimerais que tu m'aides à la trouver.",
-    "nuage_de_points" = "Je veux voir la relation entre la longueur du bec et la masse corporelle sous forme d'un nuage de points. Peux-tu vérifier s'il y a des valeurs aberrantes pour ces deux variables ?",
-    "statistiques_descriptives" = "Quelle espèce de pingouin a le bec le plus long en moyenne ? Le plus variable?",
-    "Visualisation_statistiques_descriptives" = "J'ai commencé à faire le ggplot, mais il resterait a ajouter une annotation indiquant la valeur moyenne de chaque espèce sur le graphique."
+    "histogramme" = "Je veux voir la r\u00e9partition des longueurs de nageoires des manchots. En effet, quand j'ai regard\u00e9, il me semblait y avoir une erreur dans les donn\u00e9es. J'aimerais que tu m'aides \u00e0 la trouver.",
+    "nuage_de_points" = "Je veux voir la relation entre la longueur du bec et la masse corporelle sous forme d'un nuage de points. Peux-tu v\u00e9rifier s'il y a des valeurs aberrantes pour ces deux variables ?",
+    "statistiques_descriptives" = "Quelle esp\u00e8ce de pingouin a le bec le plus long en moyenne ? Le plus variable?",
+    "Visualisation_statistiques_descriptives" = "J'ai commenc\u00e9 \u00e0 faire le ggplot, mais il resterait a ajouter une annotation indiquant la valeur moyenne de chaque esp\u00e8ce sur le graphique."
   )
   return(taches[[section]])
 }
@@ -36,11 +36,11 @@ consulter_taches <- function(section) {
 #' @export
 verifier_valeur_aberrante <- function(ligne) {
   if (ligne == 6) {
-    return("Oui, cette valeur est bien une aberration ! J'ai pu vérifier mes notes, et ça devrait être 193mm. Merci de modifier la base de données pour moi dans le dépôt Github.")
+    return("Oui, cette valeur est bien une aberration ! J'ai pu v\u00e9rifier mes notes, et \u00e7a devrait \u00eatre 193mm. Merci de modifier la base de donn\u00e9es pour moi dans le d\u00e9p\u00f4t Github.")
   }
   if (ligne == 11){
-    return("Oui, cette valeur est bien une aberration ! J'ai pu vérifier mes notes, et ça devrait être corrigé par 3.3kg de masse corporelle et 37.8 mm de longueur de bec. Merci de mettre à jour la base de données.")
+    return("Oui, cette valeur est bien une aberration ! J'ai pu v\u00e9rifier mes notes, et \u00e7a devrait \u00eatre corrig\u00e9 par 3.3kg de masse corporelle et 37.8 mm de longueur de bec. Merci de mettre \u00e0 jour la base de donn\u00e9es.")
   }  else {
-    return("Hum, j'ai bien vérifié, il ne s'agit pas d'une valeur aberrante, essayez encore !")
+    return("Hum, j'ai bien v\u00e9rifi\u00e9, il ne s'agit pas d'une valeur aberrante, essayez encore !")
   }
 }
