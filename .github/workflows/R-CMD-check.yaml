@@ -68,6 +68,11 @@ jobs:
         with:
           extra-packages: any::rcmdcheck, any::digest
           needs: check
+      - name: Install HTML manual validator
+        if: matrix.config.manual == true
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tidy
       - uses: r-lib/actions/setup-tinytex@v2
         if: matrix.config.manual == true
         env:
