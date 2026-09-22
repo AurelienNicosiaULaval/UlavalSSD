@@ -24,17 +24,22 @@
 #' All measurement columns are numeric and may contain `NA`. Dates have no
 #' gaps or duplicates, but this does not imply complete measurements.
 #'
-#' @details The original documentation identifies Environment and Climate
-#'   Change Canada station identifiers 5251 and 26892 and the 'weathercan'
-#'   package. The original download date, station-switch rule and preparation
-#'   script are not recorded in the repository. Consequently this snapshot
-#'   should not be treated as a verified homogeneous climate series for trend
-#'   estimation. Rain, snowfall and snow-depth measurements are missing for
-#'   substantial portions of the series. There is no automatic refresh.
-#' @source Data source: Environment and Climate Change Canada, obtained via
-#'   'weathercan' according to the original package documentation.
-#'   <https://climate.weather.gc.ca/>.
-#'   See the installed `COPYRIGHTS` file for attribution and provenance limits.
+#' @details The original teaching snapshot was attributed to 'weathercan'.
+#'   An independent reconstruction on 2026-09-22 matched all 11 columns,
+#'   including missing values, using the ECCC GeoMet climate-daily service:
+#'   station 5251 (climate identifier 7016294) through 1995-12-31, then station
+#'   26892 (701S001) from 1996-01-01. The original extraction date is unknown;
+#'   the reconstruction and a source manifest are provided in the repository.
+#'   It establishes the contents, not the homogeneity of the climate series.
+#'   Station changes and missing observations require further assessment before
+#'   trend estimation. Rain, snowfall and snow-depth measurements are missing
+#'   for substantial portions of the series. There is no automatic refresh.
+#' @source Data source: Environment and Climate Change Canada (ECCC).
+#'   Daily observations were independently retrieved and verified on 2026-09-22:
+#'   <https://api.weather.gc.ca/collections/climate-daily>.
+#'   Reproduced under the ECCC Data Services End-use Licence:
+#'   <https://eccc-msc.github.io/open-data/licence/readme_en/>.
+#'   The package is not endorsed by ECCC. See the installed `COPYRIGHTS` file.
 #' @examples
 #' weather <- as.data.frame(MeteoQuebec)
 #' weather$date <- as.Date(with(weather, paste(year, month, day, sep = "-")))

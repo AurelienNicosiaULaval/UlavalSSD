@@ -14,8 +14,11 @@
 - Add an offline introductory vignette, explicit exports and regression tests.
 - Update maintainer contact and package metadata for CRAN preparation.
 
-This is a preparation candidate. Historical data provenance and weather-data
-redistribution terms must be resolved before submission to CRAN.
+- Independently reconstruct and verify all weather columns against the ECCC
+  GeoMet service, with station history, source manifest and current attribution.
+
+This is a preparation candidate. The maintainer should confirm the provenance
+of the legacy administrative snapshot before submission to CRAN.
 
 # UlavalSSD 0.2.1
 

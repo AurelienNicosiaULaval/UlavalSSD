@@ -1,25 +1,32 @@
-# Preparation only: do not submit yet
+# First-submission preparation: UlavalSSD 0.3.0
 
-This is a first-submission candidate for UlavalSSD 0.3.0. It contains fixed
-Quebec datasets for data-cleaning and exploratory-analysis exercises, bilingual
-exercise feedback, and optional static style diagnostics based on lintr.
+UlavalSSD supplies fixed Quebec datasets for data-cleaning and exploratory
+analysis, bilingual exercise feedback, and optional static style diagnostics
+based on lintr. The datasets and existing French exercise outputs are unchanged.
+The maintainer contact is nicosia.aurelien@gmail.com.
 
-## Outstanding before submission
+## Outstanding maintainer confirmation
 
-- Establish and document the redistribution terms applicable to the original
-  weather snapshot; current open-data terms do not establish the terms of the
-  original extraction.
-- Recover or reconstruct a verifiable data-preparation pipeline, including
-  source versions, retrieval dates and the weather station-switch rule.
-- Complete and record checks of the final source artifact on current R release
-  and R-devel. Recheck policy and URLs immediately before submission.
+Confirm that all 1712 administrative records in the legacy listecondamnation
+snapshot come from the attributed MAPAQ dataset, with no undocumented external
+records added. The source catalogue specifies CC BY 4.0; the original
+extraction date and transformation script have not been recovered.
 
-The maintainer address has been confirmed as nicosia.aurelien@gmail.com.
-The data files and existing French exercise messages are unchanged.
+The weather snapshot has been independently reconstructed from the official
+ECCC GeoMet service. All 20111 rows and 11 columns match, including missing
+values and types. The repository records the script, source-page manifest,
+station rule, retrieval date (2026-09-22), and current ECCC attribution.
 
-## Local checks during preparation
+## Validation
 
-macOS arm64, R 4.5.0, R CMD check --as-cran with PDF manual and vignette:
-0 errors, 0 warnings, 2 notes (new submission; unable to verify current time).
-These results are supplemental because this local R is not the current release.
-The final cross-platform check results will be recorded after CI finishes.
+- Local macOS arm64, R 4.5.0: R CMD check --as-cran, including the PDF manual
+  and vignette: 0 errors, 0 warnings, 1 note (new submission).
+- CI: Windows and macOS R 4.6.1; Ubuntu R 4.6.1, R 4.5.3 and R-devel.
+  The functional candidate passed all five with 0 errors, 0 warnings and
+  1 note (new submission). Final documentation changes are rechecked by CI.
+- 96 automated expectations; valid French exercise messages identical to 0.2.1.
+- Both .rda files unchanged byte for byte; package URL checks passed.
+- A source archive with the vignette is built and retained on Ubuntu R release.
+
+The final artifact and its CI run must be verified before submission. This
+file records preparation; no package has been submitted to CRAN.

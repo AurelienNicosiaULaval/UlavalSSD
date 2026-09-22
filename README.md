@@ -36,8 +36,9 @@ de `sessionInfo()` pour le diagnostic.
 ## Version 0.3.0 en préparation
 
 Cette branche prépare une prochaine version et n'annonce pas une acceptation
-par le CRAN. La provenance historique des données et les conditions de
-redistribution de l'extraction météo restent à confirmer avant soumission.
+par le CRAN. La météo a été reconstruite et vérifiée intégralement contre la source
+officielle. L'origine exacte de l'ancien extrait MAPAQ reste à confirmer
+par le mainteneur avant soumission.
 
 Les données et les fonctions d'exercice fonctionnent avec R seul. Dans la
 version 0.3.0, le diagnostic de style utilise le package facultatif `lintr` :
@@ -64,7 +65,8 @@ range(as.Date(records$Date_publication))
 
 - `MeteoQuebec` : 20 111 observations quotidiennes du 1er janvier 1970 au
   22 janvier 2025, avec les mesures manquantes conservées. Le changement de
-  station doit être documenté avant toute analyse des tendances climatiques.
+  station est identifié; l'homogénéité de la série doit être évaluée avant
+  toute analyse des tendances climatiques.
 - `listecondamnation` : 1 712 enregistrements historiques publiés du
   13 février 2023 au 10 février 2025. Ils ne décrivent pas la situation actuelle
   des établissements et ne constituent pas un échantillon représentatif.

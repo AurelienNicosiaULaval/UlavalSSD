@@ -1,0 +1,6 @@
+"file","url","md5","rows"
+"7016294-1.json","https://api.weather.gc.ca/collections/climate-daily/items?f=json&CLIMATE_IDENTIFIER=7016294&datetime=1970-01-01T00:00:00Z/2025-01-22T23:59:59Z&limit=10000","33ba3a2235dcc07e585ae1f2ce3c09fa",10000
+"7016294-2.json","https://api.weather.gc.ca/collections/climate-daily/items?offset=10000&CLIMATE_IDENTIFIER=7016294&datetime=1970-01-01T00%3A00%3A00Z%2F2025-01-22T23%3A59%3A59Z&limit=10000","dc7d3f7d4ecc9322f839bc7d0cdad59c",10000
+"7016294-3.json","https://api.weather.gc.ca/collections/climate-daily/items?offset=20000&CLIMATE_IDENTIFIER=7016294&datetime=1970-01-01T00%3A00%3A00Z%2F2025-01-22T23%3A59%3A59Z&limit=10000","f0e1923f6f2c59e058cdd0093602b30b",111
+"701S001-1.json","https://api.weather.gc.ca/collections/climate-daily/items?f=json&CLIMATE_IDENTIFIER=701S001&datetime=1970-01-01T00:00:00Z/2025-01-22T23:59:59Z&limit=10000","60e9c59f6f278e8495e2fc2503499eb9",10000
+"701S001-2.json","https://api.weather.gc.ca/collections/climate-daily/items?offset=10000&CLIMATE_IDENTIFIER=701S001&datetime=1970-01-01T00%3A00%3A00Z%2F2025-01-22T23%3A59%3A59Z&limit=10000","027ca4879c53f0ad26f51de39f56f8de",1738

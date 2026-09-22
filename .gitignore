@@ -6,3 +6,4 @@
 *.Rcheck/
 check/
 dist/
+data-raw/cache/

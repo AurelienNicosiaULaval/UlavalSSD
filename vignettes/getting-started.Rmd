@@ -63,9 +63,10 @@ plot(one_year$date, one_year$min_temp,
 )
 ```
 
-The original weather preparation script and station-switch rule have not been
-recovered. These data support cleaning exercises; a climate-trend study would
-require checking station history and measurement consistency first.
+An independent reconstruction from the official ECCC service matched every
+stored column on 2026-09-22. Station 5251 is used through 1995 and station 26892
+from 1996. These data support cleaning exercises; a climate-trend study would
+require checking station history, measurement flags and consistency first.
 
 ## Administrative records and formatted amounts
 
