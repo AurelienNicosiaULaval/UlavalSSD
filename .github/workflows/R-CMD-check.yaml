@@ -46,6 +46,7 @@ jobs:
           needs: check
 
       - name: Build source package with vignettes
+        shell: bash
         run: R CMD build .
 
       - name: Check the built source package
