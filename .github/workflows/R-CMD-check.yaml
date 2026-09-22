@@ -75,11 +75,11 @@ jobs:
         with:
           extra-packages: any::rcmdcheck, any::digest
           needs: check
-      - name: Install HTML manual validator
+      - name: Install HTML and spelling validators
         if: matrix.config.manual == true
         run: |
           sudo apt-get update
-          sudo apt-get install -y tidy
+          sudo apt-get install -y tidy aspell aspell-en
       - uses: r-lib/actions/setup-tinytex@v2
         if: matrix.config.manual == true
         env:
@@ -101,6 +101,7 @@ jobs:
         shell: Rscript {0}
         env:
           CHECK_MANUAL: ${{ matrix.config.manual }}
+          _R_CHECK_CRAN_INCOMING_USE_ASPELL_: ${{ matrix.config.manual == true && 'true' || 'false' }}
         run: |
           archive <- list.files("dist", pattern = "[.]tar[.]gz$", full.names = TRUE)
           args <- "--as-cran"
