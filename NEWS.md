@@ -1,3 +1,13 @@
+# UlavalSSD 0.3.1
+
+- Remove the README link to submission notes excluded from the source archive.
+  Use permanent repository links for data-provenance and copyright documents.
+- Cite Hester et al. (2025), the peer-reviewed description of 'lintr', in the
+  package description and style-diagnostic help.
+- Check file URIs in the built source archive and fail validation for any
+  unexpected NOTE. Add R-devel on Windows to the check matrix.
+- No changes to the functions or datasets from version 0.3.0.
+
 # UlavalSSD 0.3.0
 
 - Replace line-based regular expressions in `eval_tidyverse_style()` with

@@ -33,20 +33,10 @@ l'archive publique ci-dessus. Cette méthode ne modifie pas les identifiants
 GitHub enregistrés. Si elle échoue, conservez le message complet et le résultat
 de `sessionInfo()` pour le diagnostic.
 
-## Version 0.3.0 candidate pour le CRAN
-
-Cette branche contient la version candidate pour une première soumission au
-CRAN. La météo a été reconstruite et vérifiée intégralement contre la source
-officielle. Le mainteneur confirme que l'extrait historique MAPAQ provient
-uniquement du jeu officiel diffusé sur Données Québec. Sa date d'extraction
-exacte et son script de préparation original ne sont pas connus.
-
-La préparation et les résultats de vérification sont consignés dans
-[cran-comments.md](cran-comments.md). Le package n'a pas encore été soumis au
-CRAN et cette branche n'annonce pas son acceptation.
+## Fonctions et dépendances
 
 Les données et les fonctions d'exercice fonctionnent avec R seul. Dans la
-version 0.3.0, le diagnostic de style utilise le package facultatif `lintr` :
+version 0.3.1, le diagnostic de style utilise le package facultatif `lintr` :
 
 ```r
 install.packages("lintr", repos = "https://cloud.r-project.org")
@@ -93,6 +83,8 @@ Le diagnostic `eval_tidyverse_style()` renvoie les problèmes de style avec leur
 numéros de ligne. Son score est un indicateur formatif, pas une note validée.
 Un fichier vide ou invalide n'obtient aucun score; la pertinence des commentaires
 et du raisonnement exige une lecture humaine.
+L'analyse statique repose sur `lintr`, décrit par
+[Hester et al. (2025), Static Code Analysis for R](https://doi.org/10.21105/joss.07240).
 
 ## Documentation, sources et contribution
 
@@ -102,7 +94,10 @@ construites à l'installation (`build_vignettes = TRUE`).
 
 Le code est sous licence MIT. Les données de tiers gardent leurs conditions
 d'origine. L'attribution et les limites de provenance sont consignées dans
-[inst/COPYRIGHTS](inst/COPYRIGHTS) et [data-raw/README.md](data-raw/README.md).
+le [fichier d'attribution](https://github.com/AurelienNicosiaULaval/UlavalSSD/blob/f1fa8711921fedca506d5df4ff5811713e19c760/inst/COPYRIGHTS)
+et la [documentation de provenance](https://github.com/AurelienNicosiaULaval/UlavalSSD/blob/f1fa8711921fedca506d5df4ff5811713e19c760/data-raw/README.md).
+Dans le package installé, le fichier d'attribution est accessible avec
+`system.file("COPYRIGHTS", package = "UlavalSSD")`.
 
 Signalez un problème reproductible dans les
 [issues du dépôt](https://github.com/AurelienNicosiaULaval/UlavalSSD/issues),

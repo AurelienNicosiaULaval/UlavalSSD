@@ -13,6 +13,8 @@ env:
   GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
   R_KEEP_PKG_SOURCE: yes
   NOT_CRAN: "false"
+  _R_CHECK_CRAN_INCOMING_REMOTE_: "true"
+  _R_CHECK_CRAN_INCOMING_CHECK_FILE_URIS_: "true"
 
 jobs:
   source-package:
@@ -27,6 +29,7 @@ jobs:
           use-public-rspm: true
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
+          extra-packages: any::xml2
           needs: check
       - name: Build source package with vignettes
         shell: bash
@@ -36,6 +39,9 @@ jobs:
           mv UlavalSSD_*.tar.gz dist/
           cd dist
           sha256sum UlavalSSD_*.tar.gz > SHA256.txt
+      - name: Check file links in the built archive
+        shell: bash
+        run: Rscript tools/check-source-archive.R dist/UlavalSSD_*.tar.gz
       - name: Save source archive
         uses: actions/upload-artifact@v4
         with:
@@ -53,6 +59,7 @@ jobs:
         config:
           - {os: macos-latest, r: 'release'}
           - {os: windows-latest, r: 'release'}
+          - {os: windows-latest, r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest, r: 'devel', http-user-agent: 'release', manual: true}
           - {os: ubuntu-latest, r: 'release'}
           - {os: ubuntu-latest, r: 'oldrel-1'}
@@ -100,12 +107,14 @@ jobs:
           if (!identical(Sys.getenv("CHECK_MANUAL"), "true")) {
             args <- c(args, "--no-manual")
           }
-          rcmdcheck::rcmdcheck(
+          result <- rcmdcheck::rcmdcheck(
             archive,
             args = args,
             error_on = "warning",
             check_dir = "check"
           )
+          source("tools/check-notes.R")
+          check_notes(result)
       - name: Save check results
         if: always()
         uses: actions/upload-artifact@v4
