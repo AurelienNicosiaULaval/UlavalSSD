@@ -86,7 +86,8 @@ consulter_taches <- function(section, lang = "fr") {
 #' verifier_valeur_aberrante(11, lang = "en")
 #' @export
 verifier_valeur_aberrante <- function(ligne, lang = "fr") {
-  if (!is.numeric(ligne) || length(ligne) != 1L || is.na(ligne) ||
+  if (!is.numeric(ligne) || is.complex(ligne) ||
+    length(ligne) != 1L || is.na(ligne) ||
     !is.finite(ligne) || ligne < 1 || ligne != floor(ligne)) {
     stop("`ligne` must be one finite positive whole number.", call. = FALSE)
   }

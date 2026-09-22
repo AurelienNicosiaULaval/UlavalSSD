@@ -24,7 +24,7 @@ station rule, retrieval date (2026-09-22), and current ECCC attribution.
 - CI: Windows and macOS R 4.6.1; Ubuntu R 4.6.1, R 4.5.3 and R-devel.
   The functional candidate passed all five with 0 errors, 0 warnings and
   1 note (new submission). Final documentation changes are rechecked by CI.
-- 96 automated expectations; valid French exercise messages identical to 0.2.1.
+- 97 automated expectations; valid French exercise messages identical to 0.2.1.
 - Both .rda files unchanged byte for byte; package URL checks passed.
 - A source archive with the vignette is built and retained on Ubuntu R release.
 

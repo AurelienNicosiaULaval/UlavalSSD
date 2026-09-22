@@ -21,7 +21,7 @@ test_that("malformed exercise inputs fail informatively", {
   for (input in list(NULL, NA, character(), c("a", "b"), 1, "", "unknown")) {
     expect_error(consulter_taches(input), "section")
   }
-  for (input in list(NULL, NA, Inf, NaN, 0, -1, 1.5, "6", c(6, 11), TRUE)) {
+  for (input in list(NULL, NA, Inf, NaN, 0, -1, 1.5, 6 + 1i, "6", c(6, 11), TRUE)) {
     expect_error(verifier_valeur_aberrante(input), "ligne")
   }
   for (input in list(NULL, NA, c("fr", "en"), "de", 1)) {
