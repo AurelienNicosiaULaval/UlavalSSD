@@ -15,7 +15,10 @@ Source licence: Creative Commons Attribution 4.0 International (CC BY 4.0),
 as recorded by the source catalogue on 2026-09-22.
 https://creativecommons.org/licenses/by/4.0/
 The original package documentation reports a selection of columns.
-The exact extraction date and transformation script are not recorded.
+The maintainer confirms that all 1712 records originate from this official
+MAPAQ dataset distributed through Donnees Quebec, with no records added from
+another source. The exact extraction date and original transformation script
+are not recorded.
 The 1712-row teaching snapshot is unchanged in this version. Publication
 dates in the snapshot range from 2023-02-13 to 2025-02-10.
 The package is not endorsed by the data provider. Historical records do not

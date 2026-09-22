@@ -42,10 +42,14 @@ Donnees Quebec and reports a selection of columns. The
 identifies the dataset as CC BY 4.0 (verified 2026-09-22). The package retains
 its historical 1,712 records, whose publication dates span 2023-02-13 to
 2025-02-10; it does not substitute the continually changing current download.
+The maintainer confirms that all 1,712 records originate from this official
+MAPAQ dataset distributed through Donnees Quebec, without records added from
+another source. This is a maintainer confirmation, not a new row-by-row match
+against the continually changing current download.
+
 The original extraction date and transformation script remain unknown. Do not
-infer a retrieval date from the last publication date. Before submitting,
-the maintainer should confirm that this legacy snapshot corresponds to the
-attributed source and that no undocumented external records were added.
+infer a retrieval date from the last publication date. The historical .rda file
+is the preserved teaching snapshot, and its limitations remain documented.
 
 ## Structural audit
 

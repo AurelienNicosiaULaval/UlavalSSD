@@ -1,5 +1,4 @@
-# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
-# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+# Build once on R release, then check the identical source archive everywhere.
 on:
   push:
     branches: [main, master]
@@ -7,71 +6,104 @@ on:
 
 name: R-CMD-check
 
-permissions: read-all
+permissions:
+  contents: read
+
+env:
+  GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+  R_KEEP_PKG_SOURCE: yes
+  NOT_CRAN: "false"
 
 jobs:
+  source-package:
+    name: Build source (R release)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-pandoc@v2
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          needs: check
+      - name: Build source package with vignettes
+        shell: bash
+        run: |
+          mkdir -p dist
+          R CMD build .
+          mv UlavalSSD_*.tar.gz dist/
+          cd dist
+          sha256sum UlavalSSD_*.tar.gz > SHA256.txt
+      - name: Save source archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: UlavalSSD-source
+          path: dist/
+          if-no-files-found: error
+
   R-CMD-check:
+    needs: source-package
     runs-on: ${{ matrix.config.os }}
-
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-
     strategy:
       fail-fast: false
       matrix:
         config:
-          - {os: macos-latest,   r: 'release'}
+          - {os: macos-latest, r: 'release'}
           - {os: windows-latest, r: 'release'}
-          - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
-          - {os: ubuntu-latest,   r: 'release'}
-          - {os: ubuntu-latest,   r: 'oldrel-1'}
-
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      R_KEEP_PKG_SOURCE: yes
-
+          - {os: ubuntu-latest, r: 'devel', http-user-agent: 'release', manual: true}
+          - {os: ubuntu-latest, r: 'release'}
+          - {os: ubuntu-latest, r: 'oldrel-1'}
     steps:
       - uses: actions/checkout@v4
-
       - uses: r-lib/actions/setup-pandoc@v2
-
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
-
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: any::rcmdcheck, any::digest
           needs: check
-
-      - name: Build source package with vignettes
-        shell: bash
-        run: R CMD build .
-
-      - name: Check the built source package
+      - uses: r-lib/actions/setup-tinytex@v2
+        if: matrix.config.manual == true
+        env:
+          TINYTEX_INSTALLER: TinyTeX
+      - uses: actions/download-artifact@v4
+        with:
+          name: UlavalSSD-source
+          path: dist/
+      - name: Verify source checksum
         shell: Rscript {0}
         run: |
-          archive <- list.files(pattern = "^UlavalSSD_.*[.]tar[.]gz$")
+          archive <- list.files("dist", pattern = "[.]tar[.]gz$", full.names = TRUE)
           stopifnot(length(archive) == 1L)
+          expected <- strsplit(readLines("dist/SHA256.txt"), " +")[[1L]][1L]
+          observed <- digest::digest(file = archive, algo = "sha256")
+          stopifnot(identical(observed, expected))
+          cat("Verified source SHA256:", observed, "\n")
+      - name: Check the source archive
+        shell: Rscript {0}
+        env:
+          CHECK_MANUAL: ${{ matrix.config.manual }}
+        run: |
+          archive <- list.files("dist", pattern = "[.]tar[.]gz$", full.names = TRUE)
+          args <- "--as-cran"
+          if (!identical(Sys.getenv("CHECK_MANUAL"), "true")) {
+            args <- c(args, "--no-manual")
+          }
           rcmdcheck::rcmdcheck(
             archive,
-            args = c("--as-cran", "--no-manual"),
+            args = args,
             error_on = "warning",
             check_dir = "check"
           )
-
       - name: Save check results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: checks-${{ matrix.config.os }}-${{ matrix.config.r }}
-          path: check
-
-      - name: Save candidate built on current R release
-        if: matrix.config.os == 'ubuntu-latest' && matrix.config.r == 'release'
-        uses: actions/upload-artifact@v4
-        with:
-          name: UlavalSSD-source
-          path: UlavalSSD_*.tar.gz
-          if-no-files-found: error
+          path: check/

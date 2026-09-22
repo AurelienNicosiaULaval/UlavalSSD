@@ -1,32 +1,37 @@
-# First-submission preparation: UlavalSSD 0.3.0
+## First submission
 
-UlavalSSD supplies fixed Quebec datasets for data-cleaning and exploratory
-analysis, bilingual exercise feedback, and optional static style diagnostics
-based on lintr. The datasets and existing French exercise outputs are unchanged.
-The maintainer contact is nicosia.aurelien@gmail.com.
+This is the first CRAN submission candidate for UlavalSSD 0.3.0. The package
+provides fixed Quebec weather and administrative-data snapshots for teaching
+data cleaning and exploratory analysis, bilingual exercise feedback, and
+optional static R code-style diagnostics based on lintr. Use, examples, tests
+and vignette rebuilding do not require network access.
 
-## Outstanding maintainer confirmation
+## Data sources and permissions
 
-Confirm that all 1712 administrative records in the legacy listecondamnation
-snapshot come from the attributed MAPAQ dataset, with no undocumented external
-records added. The source catalogue specifies CC BY 4.0; the original
-extraction date and transformation script have not been recovered.
+Code and original documentation are licensed under MIT. The installed
+COPYRIGHTS file separately attributes the third-party data and their terms.
+The package maintainer confirms that all 1712 administrative records originate
+from the official MAPAQ dataset distributed through Donnees Quebec, whose
+catalogue specifies CC BY 4.0. The historical extraction date and original
+preparation script have not been recovered; this is stated in the help.
 
-The weather snapshot has been independently reconstructed from the official
-ECCC GeoMet service. All 20111 rows and 11 columns match, including missing
-values and types. The repository records the script, source-page manifest,
-station rule, retrieval date (2026-09-22), and current ECCC attribution.
+The weather snapshot was independently retrieved from the official ECCC
+GeoMet service on 2026-09-22 under its current Data Services End-use Licence.
+All 20111 rows and 11 columns, including missing values and types, match the
+preserved snapshot. The reconstruction script and source manifest are in the
+repository. No original extraction date is inferred or claimed.
 
-## Validation
+## Checks
 
-- Local macOS arm64, R 4.5.0: R CMD check --as-cran, including the PDF manual
-  and vignette: 0 errors, 0 warnings, 1 note (new submission).
-- CI: Windows and macOS R 4.6.1; Ubuntu R 4.6.1, R 4.5.3 and R-devel.
-  The functional candidate passed all five with 0 errors, 0 warnings and
-  1 note (new submission). Final documentation changes are rechecked by CI.
-- 97 automated expectations; valid French exercise messages identical to 0.2.1.
-- Both .rda files unchanged byte for byte; package URL checks passed.
-- A source archive with the vignette is built and retained on Ubuntu R release.
+A source archive is built with R release and passed unchanged, with its SHA256
+verified, to checks on Windows, macOS and Ubuntu R release, Ubuntu R oldrel-1,
+and Ubuntu R-devel. The R-devel check includes the PDF manual. All other checks
+use --as-cran --no-manual. Final results, the source checksum and the exact CI
+run are recorded in the accompanying submission dossier.
 
-The final artifact and its CI run must be verified before submission. This
-file records preparation; no package has been submitted to CRAN.
+The functional tests contain 97 passing expectations. There are no known
+reverse dependencies on CRAN because this is a new package.
+
+## Maintainer
+
+Aurelien Nicosia <nicosia.aurelien@gmail.com>

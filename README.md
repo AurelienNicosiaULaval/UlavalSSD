@@ -33,12 +33,17 @@ l'archive publique ci-dessus. Cette méthode ne modifie pas les identifiants
 GitHub enregistrés. Si elle échoue, conservez le message complet et le résultat
 de `sessionInfo()` pour le diagnostic.
 
-## Version 0.3.0 en préparation
+## Version 0.3.0 candidate pour le CRAN
 
-Cette branche prépare une prochaine version et n'annonce pas une acceptation
-par le CRAN. La météo a été reconstruite et vérifiée intégralement contre la source
-officielle. L'origine exacte de l'ancien extrait MAPAQ reste à confirmer
-par le mainteneur avant soumission.
+Cette branche contient la version candidate pour une première soumission au
+CRAN. La météo a été reconstruite et vérifiée intégralement contre la source
+officielle. Le mainteneur confirme que l'extrait historique MAPAQ provient
+uniquement du jeu officiel diffusé sur Données Québec. Sa date d'extraction
+exacte et son script de préparation original ne sont pas connus.
+
+La préparation et les résultats de vérification sont consignés dans
+[cran-comments.md](cran-comments.md). Le package n'a pas encore été soumis au
+CRAN et cette branche n'annonce pas son acceptation.
 
 Les données et les fonctions d'exercice fonctionnent avec R seul. Dans la
 version 0.3.0, le diagnostic de style utilise le package facultatif `lintr` :

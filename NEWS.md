@@ -1,4 +1,4 @@
-# UlavalSSD 0.3.0 (development)
+# UlavalSSD 0.3.0
 
 - Replace line-based regular expressions in `eval_tidyverse_style()` with
   optional `lintr` diagnostics. Empty or invalid code has no score; subjective
@@ -17,8 +17,8 @@
 - Independently reconstruct and verify all weather columns against the ECCC
   GeoMet service, with station history, source manifest and current attribution.
 
-This is a preparation candidate. The maintainer should confirm the provenance
-of the legacy administrative snapshot before submission to CRAN.
+- Record the maintainer-confirmed origin of the historical administrative
+  snapshot: the official MAPAQ dataset distributed through Donnees Quebec.
 
 # UlavalSSD 0.2.1
 

@@ -41,7 +41,9 @@ Rows are records, not necessarily unique establishments. This
 historical extract is not an inventory of all establishments or inspections
 and cannot estimate the probability of an offence. It does not describe
 present-day operating conditions. No automatic update is performed.
-The original extraction and preparation script is not recorded.
+The maintainer confirms that all records originate from the official
+MAPAQ dataset. The original extraction date and preparation script
+are not recorded.
 }
 \examples{
 records <- as.data.frame(listecondamnation)
