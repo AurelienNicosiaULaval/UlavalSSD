@@ -1,3 +1,25 @@
+# UlavalSSD 0.3.0
+
+- Replace line-based regular expressions in `eval_tidyverse_style()` with
+  optional `lintr` diagnostics. Empty or invalid code has no score; subjective
+  criteria are `NA`. The seven observable criteria are rescaled to 20 points.
+  Scores are formative indicators and are not comparable to version 0.2.1.
+- Inspect only fenced R chunks in Quarto files, preserving source line numbers.
+  Do not execute submitted code or local `.lintr` settings.
+- Validate exercise inputs and document all four prompt keys. Add English
+  feedback through `lang = "en"`, retaining French defaults and existing keys.
+- Clarify that row feedback is an exercise answer key, not outlier detection.
+- Correct dataset schemas, date ranges and provenance limitations; preserve
+  both `.rda` files byte for byte.
+- Add an offline introductory vignette, explicit exports and regression tests.
+- Update maintainer contact and package metadata for CRAN preparation.
+
+- Independently reconstruct and verify all weather columns against the ECCC
+  GeoMet service, with station history, source manifest and current attribution.
+
+- Record the maintainer-confirmed origin of the historical administrative
+  snapshot: the official MAPAQ dataset distributed through Donnees Quebec.
+
 # UlavalSSD 0.2.1
 
 - Suppression de la dépendance inutilisée à `stringr`.

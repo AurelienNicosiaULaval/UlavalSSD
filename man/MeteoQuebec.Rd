@@ -3,35 +3,61 @@
 \docType{data}
 \name{MeteoQuebec}
 \alias{MeteoQuebec}
-\title{Base de données météo pour la province de Québec}
+\title{Historical Daily Weather Observations from Quebec}
 \format{
-Un data.frame avec les colonnes suivantes :
+A data frame with classes \code{spec_tbl_df}, \code{tbl_df}, \code{tbl}, and
+\code{data.frame}, containing 20,111 rows and 11 columns:
 \describe{
-  \item{year}{Année de l'observation (numérique).}
-  \item{month}{Mois de l'observation (numérique, 1 = janvier, ..., 12 = décembre).}
-  \item{day}{Jour du mois de l'observation (numérique, 1-31).}
-  \item{max_temp}{Température maximale quotidienne (en degrés Celsius).}
-  \item{mean_temp}{Température moyenne quotidienne (en degrés Celsius).}
-  \item{min_temp}{Température minimale quotidienne (en degrés Celsius).}
-  \item{total_precip}{Précipitations totales quotidiennes (en millimètres).}
-  \item{total_rain}{Quantité totale de pluie quotidienne (en millimètres).}
-  \item{total_snow}{Quantité totale de neige quotidienne (en centimètres).}
-  \item{snow_grnd}{Quantité de neige au sol quotidienne (en centimètres).}
+\item{...1}{Numeric row identifier in the original export, not a weather
+measurement.}
+\item{year}{Year, numeric.}
+\item{month}{Month as a two-character string, \code{"01"} to \code{"12"}.}
+\item{day}{Day as a two-character string, \code{"01"} to \code{"31"}.}
+\item{max_temp}{Daily maximum temperature, degrees Celsius.}
+\item{mean_temp}{Daily mean temperature, degrees Celsius.}
+\item{min_temp}{Daily minimum temperature, degrees Celsius.}
+\item{total_precip}{Daily total precipitation, millimetres.}
+\item{total_rain}{Daily rainfall, millimetres.}
+\item{total_snow}{Daily snowfall, centimetres.}
+\item{snow_grnd}{Snow on the ground, centimetres.}
 }
+All measurement columns are numeric and may contain \code{NA}. Dates have no
+gaps or duplicates, but this does not imply complete measurements.
 }
 \source{
-Les données ont été obtenues en utilisant le package \code{weathercan}.
-Station ID : 5251 (2017 à 1995) et 26892 (1996 à aujourd'hui).
+Data source: Environment and Climate Change Canada (ECCC).
+Daily observations were independently retrieved and verified on 2026-09-22:
+\url{https://api.weather.gc.ca/collections/climate-daily}.
+Reproduced under the ECCC Data Services End-use Licence:
+\url{https://eccc-msc.github.io/open-data/licence/readme_en/}.
+The package is not endorsed by ECCC. See the installed \code{COPYRIGHTS} file.
 }
 \usage{
 MeteoQuebec
 }
 \description{
-Cette base de données contient des informations météorologiques journalières
-pour une station météo située dans la province de Québec (Canada), collectées
-entre le 1er janvier 1970 et 2025.
+A fixed teaching snapshot of 20,111 daily records, from 1970-01-01 to
+2025-01-22 inclusive. Missing observations are retained for data-cleaning
+exercises. Values, column order and original classes are preserved from
+version 0.2.1 for compatibility with existing course materials.
+}
+\details{
+The original teaching snapshot was attributed to 'weathercan'.
+An independent reconstruction on 2026-09-22 matched all 11 columns,
+including missing values, using the ECCC GeoMet climate-daily service:
+station 5251 (climate identifier 7016294) through 1995-12-31, then station
+26892 (701S001) from 1996-01-01. The original extraction date is unknown;
+the reconstruction and a source manifest are provided in the repository.
+It establishes the contents, not the homogeneity of the climate series.
+Station changes and missing observations require further assessment before
+trend estimation. Rain, snowfall and snow-depth measurements are missing
+for substantial portions of the series. There is no automatic refresh.
 }
 \examples{
-head(MeteoQuebec)
+weather <- as.data.frame(MeteoQuebec)
+weather$date <- as.Date(with(weather, paste(year, month, day, sep = "-")))
+range(weather$date)
+colSums(is.na(weather))
+head(weather[c("date", "min_temp", "max_temp")])
 }
 \keyword{datasets}

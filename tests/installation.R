@@ -8,9 +8,11 @@ stopifnot(
   is.character(verifier_valeur_aberrante(10L))
 )
 
-# The style helper must remain usable after removing the unused stringr import.
-example_file <- tempfile(fileext = ".R")
-writeLines(c("# Exemple", "valeur <- 1"), example_file)
-result <- eval_tidyverse_style(example_file)
-stopifnot(is.list(result$scores), is.numeric(result$total), is.finite(result$total))
-unlink(example_file)
+# Optional diagnostics must not be required for loading the teaching data.
+if (requireNamespace("lintr", quietly = TRUE)) {
+  example_file <- tempfile(fileext = ".R")
+  writeLines(c("# Exemple", "valeur <- 1"), example_file)
+  result <- eval_tidyverse_style(example_file)
+  stopifnot(is.list(result$scores), is.finite(result$total))
+  unlink(example_file)
+}
