@@ -1,14 +1,15 @@
 Package: UlavalSSD
 Type: Package
 Title: Quebec Data and Tools for Introductory Data Science
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: person("Aurélien", "Nicosia", role = c("aut", "cre"),
     email = "nicosia.aurelien@gmail.com")
 Description: Historical weather observations and food-establishment conviction
     records from Quebec for teaching data import, missing values, exploratory
     analysis and reproducible reporting. Includes bilingual prompts and feedback
     for a penguin data-cleaning exercise, and an optional static R code-style
-    diagnostic based on 'lintr'. Data are distributed as fixed teaching snapshots
+    diagnostic based on 'lintr', as described by Hester and others (2025)
+    <doi:10.21105/joss.07240>. Data are distributed as fixed teaching snapshots
     and require no network access during use.
 License: MIT + file LICENSE
 Encoding: UTF-8

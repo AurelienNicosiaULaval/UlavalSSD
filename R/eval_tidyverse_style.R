@@ -27,6 +27,9 @@
 #'   versions), `total`, `max_total` (20), `status` (`"ok"`, `"empty"`, or
 #'   `"parse_error"`), and `diagnostics`, a data frame of line, column, type,
 #'   message and linter. The optional package 'lintr' must be installed.
+#' @references Hester, J., Angly, F., Chirico, M., Hyde, R., Kun, R., Patil, I.,
+#'   and Rosenstock, A. (2025). Static Code Analysis for R. Journal of Open
+#'   Source Software, 10(108), 7240. \doi{10.21105/joss.07240}.
 #' @examples
 #' if (requireNamespace("lintr", quietly = TRUE)) {
 #'   path <- tempfile(fileext = ".R")
