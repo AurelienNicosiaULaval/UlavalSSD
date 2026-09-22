@@ -5,7 +5,7 @@ on:
     branches: [main, master]
   pull_request:
 
-name: R-CMD-check.yaml
+name: R-CMD-check
 
 permissions: read-all
 
@@ -45,7 +45,32 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - uses: r-lib/actions/check-r-package@v2
+      - name: Build source package with vignettes
+        run: R CMD build .
+
+      - name: Check the built source package
+        shell: Rscript {0}
+        run: |
+          archive <- list.files(pattern = "^UlavalSSD_.*[.]tar[.]gz$")
+          stopifnot(length(archive) == 1L)
+          rcmdcheck::rcmdcheck(
+            archive,
+            args = c("--as-cran", "--no-manual"),
+            error_on = "warning",
+            check_dir = "check"
+          )
+
+      - name: Save check results
+        if: always()
+        uses: actions/upload-artifact@v4
         with:
-          upload-snapshots: true
-          build_args: 'c("--no-manual","--compact-vignettes=gs+qpdf")'
+          name: checks-${{ matrix.config.os }}-${{ matrix.config.r }}
+          path: check
+
+      - name: Save candidate built on current R release
+        if: matrix.config.os == 'ubuntu-latest' && matrix.config.r == 'release'
+        uses: actions/upload-artifact@v4
+        with:
+          name: UlavalSSD-source
+          path: UlavalSSD_*.tar.gz
+          if-no-files-found: error

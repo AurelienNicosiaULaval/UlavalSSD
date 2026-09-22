@@ -1,0 +1,39 @@
+UlavalSSD attribution and data provenance
+
+Code and original package documentation:
+Copyright 2025-2026 Aurelien Nicosia. MIT license (see LICENSE).
+The MIT license does not relicense third-party data.
+
+listecondamnation:
+Data source: Gouvernement du Quebec, Ministere de l'Agriculture, des Pecheries
+et de l'Alimentation (MAPAQ), via Donnees Quebec.
+Dataset: Condamnations des etablissements alimentaires et condamnations
+concernant le bien-etre des animaux.
+Catalogue identifier: 515374ee-ce34-464f-9875-7d1af3fa9b2a
+https://www.donneesquebec.ca/recherche/dataset/condamnations-des-etablissements-alimentaires-et-condamnations-concernant-le-bien-etre-des-anim
+Source licence: Creative Commons Attribution 4.0 International (CC BY 4.0),
+as recorded by the source catalogue on 2026-09-22.
+https://creativecommons.org/licenses/by/4.0/
+The original package documentation reports a selection of columns.
+The exact extraction date and transformation script are not recorded.
+The 1712-row teaching snapshot is unchanged in this version. Publication
+dates in the snapshot range from 2023-02-13 to 2025-02-10.
+The package is not endorsed by the data provider. Historical records do not
+establish the current situation of an establishment.
+
+MeteoQuebec:
+Data source: Environment and Climate Change Canada (ECCC), via 'weathercan'
+according to the original package documentation.
+https://climate.weather.gc.ca/
+Original documentation lists station IDs 5251 and 26892, but the preparation
+script, extraction date and station-switch rule are not recorded.
+The 20111-row snapshot covers 1970-01-01 through 2025-01-22 and is unchanged.
+Current open-data documentation and licence:
+https://eccc-msc.github.io/open-data/msc-data/climate_obs/readme_climateobs_en/
+https://eccc-msc.github.io/open-data/licence/readme_en/
+The historical climate website also publishes a separate agreement:
+https://climate.weather.gc.ca/prods_servs/attachment1_e.html
+The licence applicable at the original extraction has not been established.
+This must be resolved before a CRAN submission; the current open-data licence
+is not asserted to apply retroactively to this legacy snapshot.
+The package is not endorsed by ECCC.

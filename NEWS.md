@@ -1,3 +1,22 @@
+# UlavalSSD 0.3.0 (development)
+
+- Replace line-based regular expressions in `eval_tidyverse_style()` with
+  optional `lintr` diagnostics. Empty or invalid code has no score; subjective
+  criteria are `NA`. The seven observable criteria are rescaled to 20 points.
+  Scores are formative indicators and are not comparable to version 0.2.1.
+- Inspect only fenced R chunks in Quarto files, preserving source line numbers.
+  Do not execute submitted code or local `.lintr` settings.
+- Validate exercise inputs and document all four prompt keys. Add English
+  feedback through `lang = "en"`, retaining French defaults and existing keys.
+- Clarify that row feedback is an exercise answer key, not outlier detection.
+- Correct dataset schemas, date ranges and provenance limitations; preserve
+  both `.rda` files byte for byte.
+- Add an offline introductory vignette, explicit exports and regression tests.
+- Update maintainer contact and package metadata for CRAN preparation.
+
+This is a preparation candidate. Historical data provenance and weather-data
+redistribution terms must be resolved before submission to CRAN.
+
 # UlavalSSD 0.2.1
 
 - Suppression de la dépendance inutilisée à `stringr`.

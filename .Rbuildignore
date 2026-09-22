@@ -1,3 +1,11 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.github$
+^LICENSE\.md$
+^cran-comments\.md$
+^data-raw$
+^tools$
+^dist$
+^check$
+^.*\.Rcheck$
+^.*\.tar\.gz$

@@ -1,20 +1,36 @@
-#' Condamnations des établissements alimentaires au Québec
+#' Historical Food-Establishment Conviction Records from Quebec
 #'
-#' Ce jeu de données contient les condamnations des établissements alimentaires au Québec.
-#' Les données proviennent de la plateforme Données Québec et ont été nettoyées pour ne conserver que les colonnes essentielles.
+#' A fixed teaching snapshot of 1,712 records published from 2023-02-13 to
+#' 2025-02-10. Original text fields, missing values and column order remain
+#' for exercises in importing, cleaning and summarising administrative data.
 #'
-#' @format Un data frame avec 1712 observations et 10 variables :
+#' @format A data frame with classes `tbl_df`, `tbl`, and `data.frame`,
+#'   containing 1,712 rows and 10 columns:
 #' \describe{
-#'   \item{Nom_exploitant}{Nom de l'exploitant de l'établissement (chaîne de caractères).}
-#'   \item{Raison_sociale}{Nom commercial de l'établissement (chaîne de caractères).}
-#'   \item{Description_infraction}{Description de l'infraction constatée (chaîne de caractères).}
-#'   \item{Adresse_lieu_infraction}{Adresse où l'infraction a été constatée (chaîne de caractères).}
-#'   \item{Type_etablissement}{Type d'établissement concerné (chaîne de caractères).}
-#'   \item{Date_infraction}{Date à laquelle l'infraction a été constatée (format POSIXct).}
-#'   \item{Date_jugement}{Date du jugement relatif à l'infraction (format POSIXct).}
-#'   \item{Date_publication}{Date de publication de la condamnation (format POSIXct).}
-#'   \item{Amende}{Montant de l'amende infligée (chaîne de caractère).}
-#'   \item{SOC_NOM_ARTCL_INFRC}{Nature de l'infraction selon la législation (chaîne de caractères, peut contenir des valeurs manquantes).}
+#'   \item{Nom_exploitant}{Operator name, character.}
+#'   \item{Raison_sociale}{Business name, character; may be missing.}
+#'   \item{Description_infraction}{Description of the offence, character.}
+#'   \item{Adresse_lieu_infraction}{Address of the offence, character.}
+#'   \item{Type_etablissement}{Establishment type, character.}
+#'   \item{Date_infraction}{Offence date, POSIXct in UTC.}
+#'   \item{Date_jugement}{Judgment date, POSIXct in UTC.}
+#'   \item{Date_publication}{Publication date, POSIXct in UTC.}
+#'   \item{Amende}{Fine amount as originally formatted text, not numeric.}
+#'   \item{SOC_NOM_ARTCL_INFRC}{Legislative reference, character;
+#'     may be missing.}
 #' }
-#' @source [Données Québec](https://www.donneesquebec.ca/recherche/dataset/condamnations-des-etablissements-alimentaires-et-condamnations-concernant-le-bien-etre-des-anim)
+#' @details Rows are records, not necessarily unique establishments. This
+#'   historical extract is not an inventory of all establishments or inspections
+#'   and cannot estimate the probability of an offence. It does not describe
+#'   present-day operating conditions. No automatic update is performed.
+#'   The original extraction and preparation script is not recorded.
+#' @source Gouvernement du Quebec, Ministere de l'Agriculture, des Pecheries et
+#'   de l'Alimentation (MAPAQ), via Donnees Quebec. The source catalogue lists
+#'   the data under Creative Commons Attribution 4.0 International (CC BY 4.0).
+#'   <https://www.donneesquebec.ca/recherche/dataset/condamnations-des-etablissements-alimentaires-et-condamnations-concernant-le-bien-etre-des-anim>.
+#'   See the installed `COPYRIGHTS` file for attribution and provenance limits.
+#' @examples
+#' records <- as.data.frame(listecondamnation)
+#' range(as.Date(records$Date_publication))
+#' sort(table(records$Type_etablissement), decreasing = TRUE)
 "listecondamnation"
